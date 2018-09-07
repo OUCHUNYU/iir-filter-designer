@@ -20,12 +20,12 @@ public abstract class AbstractIIRDesigner {
     /**
      * Logger to log history of designing a filter to it.
      */
-    protected static final Logger logger = Logger.getLogger(AbstractIIRDesigner.class);
+    public static final Logger logger = Logger.getLogger(AbstractIIRDesigner.class);
 
     /*
      * contains the value of imaginary unit i (which fulfills: sqrt(i) = -1)
      */
-    protected static final Complex imaginaryUnit = new Complex(0, 1); // imaginary
+    public static final Complex imaginaryUnit = new Complex(0, 1); // imaginary
     // unit
 
     /**
@@ -33,7 +33,7 @@ public abstract class AbstractIIRDesigner {
      * wants to design a filter with a higher order, a
      * {@link FilterOrderTooBigException} is thrown.
      */
-    protected static final int maximumFilterOrder = 8;
+    public static final int maximumFilterOrder = 8;
 
     /**
      * Pre-warps the frequencies for digital filter design.
@@ -41,7 +41,7 @@ public abstract class AbstractIIRDesigner {
      * @param frequencies frequencies to be pre-warped
      * @return warped frequencies
      */
-    protected double[] prewarpFrequencies(double[] frequencies) {
+    public double[] prewarpFrequencies(double[] frequencies) {
 
         double[] warpedFrequencies = new double[frequencies.length];
         for (int i = 0; i < warpedFrequencies.length; i++)
@@ -58,7 +58,7 @@ public abstract class AbstractIIRDesigner {
      * @param frequencies frequencies to be unwarped
      * @return unwarped frequencies
      */
-    protected double[] unwarpFrequencies(double[] frequencies) {
+    public double[] unwarpFrequencies(double[] frequencies) {
 
         double[] newFrequencies = new double[frequencies.length];
         for (int i = 0; i < newFrequencies.length; i++)
@@ -76,7 +76,7 @@ public abstract class AbstractIIRDesigner {
      * @param samplingFrequency sampling frequency
      * @return normalized frequencies
      */
-    protected double[] normalizeFrequencies(double[] frequencies, double samplingFrequency) {
+    public double[] normalizeFrequencies(double[] frequencies, double samplingFrequency) {
 
         double[] normalizedFrequencies = new double[frequencies.length];
 
@@ -97,7 +97,7 @@ public abstract class AbstractIIRDesigner {
      * @param gstop the minimum attenuation in the stopband [dB]
      * @return coefficients of the filter which meets the given specification
      */
-    protected FilterCoefficients designAnalogFilter(FilterType type, double[] passb, double[] stopb, double gpass,
+    public FilterCoefficients designAnalogFilter(FilterType type, double[] passb, double[] stopb, double gpass,
                                                     double gstop) throws BadFilterParametersException {
         return designFilter(type, passb, stopb, gpass, gstop, true);
     }
@@ -155,7 +155,7 @@ public abstract class AbstractIIRDesigner {
      * @param gstop the minimum attenuation in the stopband [dB]
      * @return coefficients of the filter which meets the given specification
      */
-    protected FilterCoefficients designDigitalFilter(FilterType type, double[] passb, double[] stopb, double gpass,
+    public FilterCoefficients designDigitalFilter(FilterType type, double[] passb, double[] stopb, double gpass,
                                                      double gstop) throws BadFilterParametersException {
         return designFilter(type, passb, stopb, gpass, gstop, false);
     }
@@ -174,7 +174,7 @@ public abstract class AbstractIIRDesigner {
      *               filter
      * @return coefficients of the filter which meets the specification
      */
-    protected FilterCoefficients designFilter(FilterType type, double[] passb, double[] stopb, double gpass,
+    public FilterCoefficients designFilter(FilterType type, double[] passb, double[] stopb, double gpass,
                                               double gstop, boolean analog) throws BadFilterParametersException {
 
         int filterOrder = calculateFilterOrder(type, passb, stopb, gpass, gstop, analog);
@@ -205,7 +205,7 @@ public abstract class AbstractIIRDesigner {
      *                           filter
      * @return coefficients of the filter which meets the specification
      */
-    protected FilterCoefficients designFilter(FilterType type, int filterOrder, double[] naturalFrequencies,
+    public FilterCoefficients designFilter(FilterType type, int filterOrder, double[] naturalFrequencies,
                                               double gpass, double gstop, boolean analog) throws BadFilterParametersException {
 
         double samplingFrequency = 2.0;
@@ -280,7 +280,7 @@ public abstract class AbstractIIRDesigner {
      * @param gstop the minimum attenuation in the stopband [dB]
      * @return the frequency ratio
      */
-    protected double calculateFrequencyRatio(FilterType type, double[] passb, double[] stopb, double gpass,
+    public double calculateFrequencyRatio(FilterType type, double[] passb, double[] stopb, double gpass,
                                              double gstop) {
 
         double frequencyRatio = 0;
@@ -346,7 +346,7 @@ public abstract class AbstractIIRDesigner {
      *                    filter
      * @return the critical frequency
      */
-    protected double calculateNaturalFrequency(FilterType type, int filterOrder, double passb, double stopb,
+    public double calculateNaturalFrequency(FilterType type, int filterOrder, double passb, double stopb,
                                                double gpass, double gstop, boolean analog) throws BadFilterParametersException {
         return calculateNaturalFrequency(type, filterOrder, new double[]{passb}, new double[]{stopb}, gpass,
                 gstop, analog)[0];
@@ -385,7 +385,7 @@ public abstract class AbstractIIRDesigner {
      *               filter
      * @return the order of filter
      */
-    protected int calculateFilterOrder(FilterType type, double passb, double stopb, double gpass, double gstop,
+    public int calculateFilterOrder(FilterType type, double passb, double stopb, double gpass, double gstop,
                                        boolean analog) throws BadFilterParametersException {
         return calculateFilterOrder(type, new double[]{passb}, new double[]{stopb}, gpass, gstop, analog);
     }
@@ -400,7 +400,7 @@ public abstract class AbstractIIRDesigner {
      * @param gstop the minimum attenuation in the stopband [dB]
      * @return the optimized values of the passband edge frequencies
      */
-    protected double[] optimizeBandstopFilterPassbandFrequencies(double[] passb, double[] stopb, double gpass,
+    public double[] optimizeBandstopFilterPassbandFrequencies(double[] passb, double[] stopb, double gpass,
                                                                  double gstop) {
 
         double[] passbCopy = passb.clone();
@@ -447,7 +447,7 @@ public abstract class AbstractIIRDesigner {
      *                          used for computation
      * @return the filter order (possibly non-integer)
      */
-    protected double calculateBandstopObjectiveFunctionValue(double passbandEdge,
+    public double calculateBandstopObjectiveFunctionValue(double passbandEdge,
                                                              BandstopObjectiveFunction objectiveFunction) {
 
         return calculateBandstopObjectiveFunctionValue(passbandEdge, objectiveFunction.getVariablePassbandEdgeIndex(),
@@ -577,7 +577,7 @@ public abstract class AbstractIIRDesigner {
      *
      * @param s a string to be logged.
      */
-    protected void debug(String s) {
+    public void debug(String s) {
         String split[];
 
         split = s.split("\\n");

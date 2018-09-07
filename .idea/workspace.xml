@@ -2,47 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a07be820-c977-4d2f-bd7a-71d0b13e358c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/IIRDesigner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/IIRDesigner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/utils/Filtfilt.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/utils/Mat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/designers/AbstractIIRDesigner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/designers/AbstractIIRDesigner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/designers/ButterworthIIRDesigner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/designers/ButterworthIIRDesigner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/designers/Chebyshev1IIRDesigner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/designers/Chebyshev1IIRDesigner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/designers/Chebyshev2IIRDesigner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/designers/Chebyshev2IIRDesigner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/designers/ChebyshevIIRDesigner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/designers/ChebyshevIIRDesigner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/designers/EllipticIIRDesigner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/designers/EllipticIIRDesigner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/exceptions/BadFilterParametersException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/exceptions/BadFilterParametersException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/exceptions/FilterNotStableException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/exceptions/FilterNotStableException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/exceptions/FilterOrderTooBigException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/exceptions/FilterOrderTooBigException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/fft/FourierTransform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/fft/FourierTransform.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/fft/WindowFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/fft/WindowFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/fft/WindowType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/fft/WindowType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/math/ArrayOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/math/ArrayOperations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/math/ComplexPolynomial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/math/ComplexPolynomial.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/math/FunctionOptimizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/math/FunctionOptimizer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/math/SpecialMath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/math/SpecialMath.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/math/UnivariateFunctionWrappedInAMultivariate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/math/UnivariateFunctionWrappedInAMultivariate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/model/ApproximationFunctionType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/model/ApproximationFunctionType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/model/FilterCoefficients.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/model/FilterCoefficients.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/model/FilterType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/model/FilterType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/model/FilterZerosPolesGain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/model/FilterZerosPolesGain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/model/TransferFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/model/TransferFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/response/FilterFrequencyResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/response/FilterFrequencyResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/response/FilterFrequencyResponseCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/response/FilterFrequencyResponseCalculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/response/FilterResponseCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/response/FilterResponseCalculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/response/FilterTimeDomainResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/response/FilterTimeDomainResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/response/FilterTimeDomainResponseCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/response/FilterTimeDomainResponseCalculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/utils/InitialStateCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/utils/InitialStateCalculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/FunctionOptimizerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/FunctionOptimizerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/IIRDesignerAssert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/IIRDesignerAssert.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/IIRDesignerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/IIRDesignerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/SignalMLAssert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/SignalMLAssert.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/designers/ButterworthIIRDesignerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/designers/ButterworthIIRDesignerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/designers/Chebyshev1IIRDesignerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/designers/Chebyshev1IIRDesignerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/designers/Chebyshev2IIRDesignerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/designers/Chebyshev2IIRDesignerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/designers/ChebyshevIIRDesignerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/designers/ChebyshevIIRDesignerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/designers/EllipticIIRDesignerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/designers/EllipticIIRDesignerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/model/FilterCoefficientsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/model/FilterCoefficientsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/model/FilterZerosPolesGainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/model/FilterZerosPolesGainTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/model/TransferFunctionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/model/TransferFunctionTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -61,12 +24,22 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="43" />
+          <entry key="java" value="51" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="43" />
+          <entry key="JAVA" value="51" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="java" value="25" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="25" />
         </counts>
       </usages-collector>
     </session>
@@ -74,96 +47,80 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/designers/AbstractIIRDesigner.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="287">
+              <caret line="221" column="14" lean-forward="true" selection-start-line="221" selection-start-column="14" selection-end-line="221" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/designers/Chebyshev2IIRDesignerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="47" selection-start-line="47" selection-end-line="47" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/designers/ChebyshevIIRDesignerTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="43" column="23" selection-start-line="43" selection-start-column="23" selection-end-line="43" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/designers/EllipticIIRDesignerTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
-              <caret line="51" column="23" selection-start-line="51" selection-start-column="23" selection-end-line="51" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/model/FilterCoefficientsTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="36" column="25" selection-start-line="36" selection-start-column="25" selection-end-line="36" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/model/FilterZerosPolesGainTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="38" column="9" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/model/TransferFunctionTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="47" selection-start-line="47" selection-end-line="47" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/FunctionOptimizerTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="45" selection-start-line="45" selection-end-line="45" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/IIRDesignerAssert.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="40" column="31" selection-start-line="40" selection-start-column="31" selection-end-line="40" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/IIRDesignerTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="38" column="1" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
+            <state relative-caret-position="244">
+              <caret line="52" column="51" lean-forward="true" selection-start-line="52" selection-start-column="51" selection-end-line="52" selection-end-column="51" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/SignalMLAssert.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/designers/Chebyshev2IIRDesigner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="42" column="6" selection-start-line="42" selection-start-column="6" selection-end-line="42" selection-end-column="6" />
+            <state relative-caret-position="510">
+              <caret line="39" column="38" lean-forward="true" selection-start-line="39" selection-start-column="38" selection-end-line="39" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/designers/ButterworthIIRDesigner.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="414">
+              <caret line="34" column="26" lean-forward="true" selection-start-line="34" selection-start-column="26" selection-end-line="34" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/designers/ButterworthIIRDesignerTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="33" column="55" lean-forward="true" selection-start-line="33" selection-start-column="55" selection-end-line="33" selection-end-column="55" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>designfilter</find>
+      <find>designFilter</find>
+      <find>bandpass</find>
+      <find>designDigitalFilter</find>
+      <find>protected</find>
+      <find>args</find>
+      <find>mat.</find>
+      <find>Filtfilt</find>
+      <find>public abstract</find>
+      <find>iirdesigner.</find>
+      <find>passb</find>
+      <find>calculateNaturalFrequency</find>
+      <find>designfilt</find>
+      <find>calculatePrototype</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>public</replace>
+      <replace>protected abstract</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -171,7 +128,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/designers/AbstractIIRDesigner.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/designers/ButterworthIIRDesigner.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/designers/Chebyshev1IIRDesigner.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/designers/Chebyshev2IIRDesigner.java" />
@@ -212,13 +168,17 @@
         <option value="$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/IIRDesignerAssert.java" />
         <option value="$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/IIRDesignerTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/SignalMLAssert.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/utils/FiltFilt.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/utils/Mat.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/designers/AbstractIIRDesigner.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="23" />
-    <option name="width" value="1440" />
-    <option name="height" value="877" />
+    <option name="x" value="894" />
+    <option name="y" value="120" />
+    <option name="width" value="1569" />
+    <option name="height" value="1207" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -398,12 +358,12 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="877" extended-state="6" />
+    <frame x="894" y="120" width="1569" height="1207" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Designer" />
       <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24964234" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22855271" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Terminal" />
@@ -426,38 +386,10 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/designers/AbstractIIRDesigner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-942">
-          <caret line="184" column="54" lean-forward="true" selection-start-line="184" selection-start-column="54" selection-end-line="184" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/designers/ButterworthIIRDesigner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="19" column="32" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/designers/Chebyshev1IIRDesigner.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="19" column="33" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/designers/Chebyshev2IIRDesigner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/designers/ChebyshevIIRDesigner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-432">
-          <caret line="21" column="51" selection-start-line="21" selection-start-column="51" selection-end-line="21" selection-end-column="51" />
         </state>
       </provider>
     </entry>
@@ -629,13 +561,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/designers/ButterworthIIRDesignerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="37" column="39" lean-forward="true" selection-start-line="37" selection-start-column="39" selection-end-line="37" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/designers/Chebyshev1IIRDesignerTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -643,59 +568,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/designers/Chebyshev2IIRDesignerTest.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/SignalMLAssert.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="47" selection-start-line="47" selection-end-line="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/designers/ChebyshevIIRDesignerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="43" column="23" selection-start-line="43" selection-start-column="23" selection-end-line="43" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/designers/EllipticIIRDesignerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="51" column="23" selection-start-line="51" selection-start-column="23" selection-end-line="51" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/model/FilterCoefficientsTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="36" column="25" selection-start-line="36" selection-start-column="25" selection-end-line="36" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/model/FilterZerosPolesGainTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="38" column="9" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/model/TransferFunctionTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="47" selection-start-line="47" selection-end-line="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/FunctionOptimizerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="45" selection-start-line="45" selection-end-line="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/IIRDesignerAssert.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="40" column="31" selection-start-line="40" selection-start-column="31" selection-end-line="40" selection-end-column="31" />
+        <state relative-caret-position="390">
+          <caret line="29" column="44" lean-forward="true" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -706,10 +582,117 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/SignalMLAssert.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/IIRDesignerAssert.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="40" column="31" selection-start-line="40" selection-start-column="31" selection-end-line="40" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/FunctionOptimizerTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="585">
-          <caret line="42" column="6" selection-start-line="42" selection-start-column="6" selection-end-line="42" selection-end-column="6" />
+          <caret line="45" selection-start-line="45" selection-end-line="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/model/TransferFunctionTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="47" selection-start-line="47" selection-end-line="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/model/FilterZerosPolesGainTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="38" column="9" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/model/FilterCoefficientsTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="36" column="25" selection-start-line="36" selection-start-column="25" selection-end-line="36" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/designers/EllipticIIRDesignerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="51" column="23" selection-start-line="51" selection-start-column="23" selection-end-line="51" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/designers/ChebyshevIIRDesignerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="43" column="23" selection-start-line="43" selection-start-column="23" selection-end-line="43" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/utils/Mat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="233" column="13" lean-forward="true" selection-start-line="233" selection-start-column="13" selection-end-line="233" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/utils/Filtfilt.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-37">
+          <caret line="23" column="46" selection-start-line="23" selection-start-column="36" selection-end-line="23" selection-end-column="46" />
+          <folding>
+            <element signature="e#1065#1074#0" expanded="true" />
+            <element signature="e#1125#1134#0" expanded="true" />
+            <element signature="e#1601#1609#0" expanded="true" />
+            <element signature="e#2308#2316#0" expanded="true" />
+            <element signature="e#2369#2377#0" expanded="true" />
+            <element signature="e#2425#2433#0" expanded="true" />
+            <element signature="e#7676#7684#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/designers/ChebyshevIIRDesigner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="10" column="54" lean-forward="true" selection-start-line="10" selection-start-column="54" selection-end-line="10" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/designers/Chebyshev2IIRDesignerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="52" column="51" lean-forward="true" selection-start-line="52" selection-start-column="51" selection-end-line="52" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/org/jdsp/iirfilterdesigner/designers/ButterworthIIRDesignerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="33" column="55" lean-forward="true" selection-start-line="33" selection-start-column="55" selection-end-line="33" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/designers/ButterworthIIRDesigner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="34" column="26" lean-forward="true" selection-start-line="34" selection-start-column="26" selection-end-line="34" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/designers/AbstractIIRDesigner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="221" column="14" lean-forward="true" selection-start-line="221" selection-start-column="14" selection-end-line="221" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/jdsp/iirfilterdesigner/designers/Chebyshev2IIRDesigner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="39" column="38" lean-forward="true" selection-start-line="39" selection-start-column="38" selection-end-line="39" selection-end-column="38" />
         </state>
       </provider>
     </entry>
