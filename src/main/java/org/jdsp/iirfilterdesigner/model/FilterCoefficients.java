@@ -30,8 +30,8 @@ public class FilterCoefficients {
      */
     public FilterCoefficients(double[] bCoefficients, double[] aCoefficients) {
 
-	this.aCoefficients = aCoefficients.clone();
-	this.bCoefficients = bCoefficients.clone();
+        this.aCoefficients = aCoefficients.clone();
+        this.bCoefficients = bCoefficients.clone();
 
     }
 
@@ -42,11 +42,11 @@ public class FilterCoefficients {
      * @return the order orf the filter
      */
     public int getFilterOrder() {
-	return Math.max(aCoefficients.length - 1, bCoefficients.length - 1);
+        return Math.max(aCoefficients.length - 1, bCoefficients.length - 1);
     }
 
     public int getNumberOfCoefficients() {
-	return Math.max(aCoefficients.length, bCoefficients.length);
+        return Math.max(aCoefficients.length, bCoefficients.length);
     }
 
     /**
@@ -55,7 +55,7 @@ public class FilterCoefficients {
      * @return an array of feedback coefficients
      */
     public double[] getACoefficients() {
-	return aCoefficients;
+        return aCoefficients;
 
     }
 
@@ -65,7 +65,7 @@ public class FilterCoefficients {
      * @return an array of feedforward coefficients.
      */
     public double[] getBCoefficients() {
-	return bCoefficients;
+        return bCoefficients;
     }
 
     /**
@@ -76,9 +76,9 @@ public class FilterCoefficients {
      */
     protected boolean isOddOrder() {
 
-	if (getFilterOrder() % 2 == 1)
-	    return true;
-	return false;
+        if (getFilterOrder() % 2 == 1)
+            return true;
+        return false;
 
     }
 
@@ -88,44 +88,44 @@ public class FilterCoefficients {
      */
     protected void normalize() throws BadFilterParametersException {
 
-	int i;
+        int i;
 
-	// finding the first non zero A Coefficient
-	i = 0;
-	while (i < aCoefficients.length && aCoefficients[i] == 0)
-	    i++;
+        // finding the first non zero A Coefficient
+        i = 0;
+        while (i < aCoefficients.length && aCoefficients[i] == 0)
+            i++;
 
-	int firstNonZero = i;
+        int firstNonZero = i;
 
-	// deleting zero coefficients padding from aCoefficients
-	double[] newACoefficients = new double[aCoefficients.length - firstNonZero];
-	for (i = 0; i < newACoefficients.length; i++)
-	    newACoefficients[i] = aCoefficients[firstNonZero + i];
+        // deleting zero coefficients padding from aCoefficients
+        double[] newACoefficients = new double[aCoefficients.length - firstNonZero];
+        for (i = 0; i < newACoefficients.length; i++)
+            newACoefficients[i] = aCoefficients[firstNonZero + i];
 
-	aCoefficients = newACoefficients;
+        aCoefficients = newACoefficients;
 
-	// calculating normalized coefficients values
-	double x = 1.0 / aCoefficients[0];
-	for (i = 0; i < bCoefficients.length; i++)
-	    bCoefficients[i] = bCoefficients[i] * x;
+        // calculating normalized coefficients values
+        double x = 1.0 / aCoefficients[0];
+        for (i = 0; i < bCoefficients.length; i++)
+            bCoefficients[i] = bCoefficients[i] * x;
 
-	for (i = 0; i < aCoefficients.length; i++)
-	    aCoefficients[i] = aCoefficients[i] * x;
+        for (i = 0; i < aCoefficients.length; i++)
+            aCoefficients[i] = aCoefficients[i] * x;
 
-	if (Math.abs(bCoefficients[0]) <= 1e-8) {
-	    i = 0;
-	    while (i < bCoefficients.length && Math.abs(bCoefficients[i]) <= 1e-8)
-		i++;
-	    int firstNotCloseToZero = i;
+        if (Math.abs(bCoefficients[0]) <= 1e-8) {
+            i = 0;
+            while (i < bCoefficients.length && Math.abs(bCoefficients[i]) <= 1e-8)
+                i++;
+            int firstNotCloseToZero = i;
 
-	    double[] newBCoefficients = new double[bCoefficients.length - firstNotCloseToZero];
-	    for (i = 0; i < newBCoefficients.length; i++)
-		newBCoefficients[i] = bCoefficients[firstNotCloseToZero + i];
-	    bCoefficients = newBCoefficients;
+            double[] newBCoefficients = new double[bCoefficients.length - firstNotCloseToZero];
+            for (i = 0; i < newBCoefficients.length; i++)
+                newBCoefficients[i] = bCoefficients[firstNotCloseToZero + i];
+            bCoefficients = newBCoefficients;
 
-	    throw new BadFilterParametersException(
-		    "Badly conditioned filter coefficients (numerator): the results may be meaningless");
-	}
+            throw new BadFilterParametersException(
+                    "Badly conditioned filter coefficients (numerator): the results may be meaningless");
+        }
 
     }
 
@@ -138,27 +138,27 @@ public class FilterCoefficients {
      */
     public void transformLowpassToLowpass(double w0) throws BadFilterParametersException {
 
-	int numberOfCoeffs = getNumberOfCoefficients();
-	double[] powers = new double[numberOfCoeffs];
-	int i;
+        int numberOfCoeffs = getNumberOfCoefficients();
+        double[] powers = new double[numberOfCoeffs];
+        int i;
 
-	for (i = 0; i < numberOfCoeffs; i++)
-	    powers[i] = Math.pow(w0, numberOfCoeffs - 1 - i);
+        for (i = 0; i < numberOfCoeffs; i++)
+            powers[i] = Math.pow(w0, numberOfCoeffs - 1 - i);
 
-	double[] a = getACoefficients();
-	double[] b = getBCoefficients();
+        double[] a = getACoefficients();
+        double[] b = getBCoefficients();
 
-	int start1 = Math.max(b.length - a.length, 0);
-	int start2 = Math.max(a.length - b.length, 0);
+        int start1 = Math.max(b.length - a.length, 0);
+        int start2 = Math.max(a.length - b.length, 0);
 
-	for (i = 0; i < b.length; i++)
-	    b[i] = b[i] * powers[start1] / powers[start2 + i];
-	for (i = 0; i < a.length; i++)
-	    a[i] = a[i] * powers[start1] / powers[start1 + i];
+        for (i = 0; i < b.length; i++)
+            b[i] = b[i] * powers[start1] / powers[start2 + i];
+        for (i = 0; i < a.length; i++)
+            a[i] = a[i] * powers[start1] / powers[start1 + i];
 
-	bCoefficients = b;
-	aCoefficients = a;
-	normalize();
+        bCoefficients = b;
+        aCoefficients = a;
+        normalize();
 
     }
 
@@ -171,51 +171,51 @@ public class FilterCoefficients {
      */
     public void transformLowpassToHighpass(double w0) throws BadFilterParametersException {
 
-	int numberOfCoeffs = getNumberOfCoefficients();
-	double[] powers = new double[numberOfCoeffs];
-	int i;
+        int numberOfCoeffs = getNumberOfCoefficients();
+        double[] powers = new double[numberOfCoeffs];
+        int i;
 
-	for (i = 0; i < numberOfCoeffs; i++) {
+        for (i = 0; i < numberOfCoeffs; i++) {
 
-	    if (w0 != 1)
-		powers[i] = Math.pow(w0, i);
-	    else
-		powers[i] = 1.0;
+            if (w0 != 1)
+                powers[i] = Math.pow(w0, i);
+            else
+                powers[i] = 1.0;
 
-	}
+        }
 
-	double[] outa;
-	double[] outb;
+        double[] outa;
+        double[] outb;
 
-	if (aCoefficients.length >= bCoefficients.length) {
+        if (aCoefficients.length >= bCoefficients.length) {
 
-	    outa = new double[aCoefficients.length];
-	    for (i = 0; i < aCoefficients.length; i++)
-		outa[i] = aCoefficients[aCoefficients.length - i - 1] * powers[i];
+            outa = new double[aCoefficients.length];
+            for (i = 0; i < aCoefficients.length; i++)
+                outa[i] = aCoefficients[aCoefficients.length - i - 1] * powers[i];
 
-	    outb = new double[aCoefficients.length];
-	    for (i = 0; i < bCoefficients.length; i++)
-		outb[i] = bCoefficients[bCoefficients.length - i - 1] * powers[i];
-	    for (i = bCoefficients.length; i < aCoefficients.length; i++)
-		outb[i] = 0.0;
+            outb = new double[aCoefficients.length];
+            for (i = 0; i < bCoefficients.length; i++)
+                outb[i] = bCoefficients[bCoefficients.length - i - 1] * powers[i];
+            for (i = bCoefficients.length; i < aCoefficients.length; i++)
+                outb[i] = 0.0;
 
-	} else {
+        } else {
 
-	    outb = new double[bCoefficients.length];
-	    for (i = 0; i < bCoefficients.length; i++)
-		outb[i] = bCoefficients[bCoefficients.length - i - 1] * powers[i];
+            outb = new double[bCoefficients.length];
+            for (i = 0; i < bCoefficients.length; i++)
+                outb[i] = bCoefficients[bCoefficients.length - i - 1] * powers[i];
 
-	    outa = new double[bCoefficients.length];
-	    for (i = 0; i < aCoefficients.length; i++)
-		outa[i] = aCoefficients[aCoefficients.length - i - 1] * powers[i];
-	    for (i = aCoefficients.length; i < bCoefficients.length; i++)
-		outb[i] = 0.0;
+            outa = new double[bCoefficients.length];
+            for (i = 0; i < aCoefficients.length; i++)
+                outa[i] = aCoefficients[aCoefficients.length - i - 1] * powers[i];
+            for (i = aCoefficients.length; i < bCoefficients.length; i++)
+                outb[i] = 0.0;
 
-	}
+        }
 
-	aCoefficients = outa;
-	bCoefficients = outb;
-	normalize();
+        aCoefficients = outa;
+        bCoefficients = outb;
+        normalize();
 
     }
 
@@ -229,44 +229,44 @@ public class FilterCoefficients {
      */
     public void transformLowpassToBandpass(double w0, double bw) throws BadFilterParametersException {
 
-	int D = aCoefficients.length - 1;
-	int N = bCoefficients.length - 1;
-	int ma = Math.max(D, N);
-	int Np = N + ma;
-	int Dp = D + ma;
+        int D = aCoefficients.length - 1;
+        int N = bCoefficients.length - 1;
+        int ma = Math.max(D, N);
+        int Np = N + ma;
+        int Dp = D + ma;
 
-	double[] bprime = new double[Np + 1];
-	double[] aprime = new double[Dp + 1];
+        double[] bprime = new double[Np + 1];
+        double[] aprime = new double[Dp + 1];
 
-	double value;
-	int i, j, k;
-	for (j = 0; j <= Np; j++) {
+        double value;
+        int i, j, k;
+        for (j = 0; j <= Np; j++) {
 
-	    value = 0.0;
-	    for (i = 0; i <= N; i++)
-		for (k = 0; k <= i; k++)
-		    if (ma - i + 2 * k == j)
-			value += SpecialMath.combinations(i, k) * bCoefficients[N - i] * Math.pow(w0 * w0, i - k)
-				/ Math.pow(bw, i);
-	    bprime[Np - j] = value;
+            value = 0.0;
+            for (i = 0; i <= N; i++)
+                for (k = 0; k <= i; k++)
+                    if (ma - i + 2 * k == j)
+                        value += SpecialMath.combinations(i, k) * bCoefficients[N - i] * Math.pow(w0 * w0, i - k)
+                                / Math.pow(bw, i);
+            bprime[Np - j] = value;
 
-	}
+        }
 
-	for (j = 0; j <= Dp; j++) {
+        for (j = 0; j <= Dp; j++) {
 
-	    value = 0.0;
-	    for (i = 0; i <= D; i++)
-		for (k = 0; k <= i; k++)
-		    if (ma - i + 2 * k == j)
-			value += SpecialMath.combinations(i, k) * aCoefficients[D - i] * Math.pow(w0 * w0, i - k)
-				/ Math.pow(bw, i);
-	    aprime[Dp - j] = value;
+            value = 0.0;
+            for (i = 0; i <= D; i++)
+                for (k = 0; k <= i; k++)
+                    if (ma - i + 2 * k == j)
+                        value += SpecialMath.combinations(i, k) * aCoefficients[D - i] * Math.pow(w0 * w0, i - k)
+                                / Math.pow(bw, i);
+            aprime[Dp - j] = value;
 
-	}
+        }
 
-	aCoefficients = aprime;
-	bCoefficients = bprime;
-	normalize();
+        aCoefficients = aprime;
+        bCoefficients = bprime;
+        normalize();
 
     }
 
@@ -280,41 +280,41 @@ public class FilterCoefficients {
      */
     public void transformFromLowpassToBandstop(double w0, double bw) throws BadFilterParametersException {
 
-	int D = aCoefficients.length - 1;
-	int N = bCoefficients.length - 1;
-	int ma = Math.max(D, N);
-	int Np = ma + ma;
-	int Dp = ma + ma;
+        int D = aCoefficients.length - 1;
+        int N = bCoefficients.length - 1;
+        int ma = Math.max(D, N);
+        int Np = ma + ma;
+        int Dp = ma + ma;
 
-	double[] bprime = new double[Np + 1];
-	double[] aprime = new double[Dp + 1];
+        double[] bprime = new double[Np + 1];
+        double[] aprime = new double[Dp + 1];
 
-	double value;
-	int i, j, k;
+        double value;
+        int i, j, k;
 
-	for (j = 0; j <= Np; j++) {
-	    value = 0.0;
-	    for (i = 0; i <= N; i++)
-		for (k = 0; k <= ma - i; k++)
-		    if (i + 2 * k == j)
-			value += SpecialMath.combinations(ma - i, k) * bCoefficients[N - i]
-				* Math.pow(w0 * w0, ma - i - k) * Math.pow(bw, i);
-	    bprime[Np - j] = value;
-	}
+        for (j = 0; j <= Np; j++) {
+            value = 0.0;
+            for (i = 0; i <= N; i++)
+                for (k = 0; k <= ma - i; k++)
+                    if (i + 2 * k == j)
+                        value += SpecialMath.combinations(ma - i, k) * bCoefficients[N - i]
+                                * Math.pow(w0 * w0, ma - i - k) * Math.pow(bw, i);
+            bprime[Np - j] = value;
+        }
 
-	for (j = 0; j <= Dp; j++) {
-	    value = 0.0;
-	    for (i = 0; i <= D; i++)
-		for (k = 0; k <= ma - i; k++)
-		    if (i + 2 * k == j)
-			value += SpecialMath.combinations(ma - i, k) * aCoefficients[D - i]
-				* Math.pow(w0 * w0, ma - i - k) * Math.pow(bw, i);
-	    aprime[Dp - j] = value;
-	}
+        for (j = 0; j <= Dp; j++) {
+            value = 0.0;
+            for (i = 0; i <= D; i++)
+                for (k = 0; k <= ma - i; k++)
+                    if (i + 2 * k == j)
+                        value += SpecialMath.combinations(ma - i, k) * aCoefficients[D - i]
+                                * Math.pow(w0 * w0, ma - i - k) * Math.pow(bw, i);
+            aprime[Dp - j] = value;
+        }
 
-	aCoefficients = aprime;
-	bCoefficients = bprime;
-	normalize();
+        aCoefficients = aprime;
+        bCoefficients = bprime;
+        normalize();
 
     }
 
@@ -323,113 +323,113 @@ public class FilterCoefficients {
      * function transforms it to a digital filter using the bilinear transform.
      *
      * @param samplingFrequency the sampling frequency under which the digital
-     *        filter will operate.
+     *                          filter will operate.
      */
     public void bilinearTransform(double samplingFrequency) throws BadFilterParametersException {
 
-	int D = aCoefficients.length - 1;
-	int N = bCoefficients.length - 1;
-	int M = Math.max(D, N);
-	int Dp = M;
-	int Np = M;
+        int D = aCoefficients.length - 1;
+        int N = bCoefficients.length - 1;
+        int M = Math.max(D, N);
+        int Dp = M;
+        int Np = M;
 
-	double[] bprime = new double[Np + 1];
-	double[] aprime = new double[Dp + 1];
+        double[] bprime = new double[Np + 1];
+        double[] aprime = new double[Dp + 1];
 
-	double value;
-	int i, j, k, l;
+        double value;
+        int i, j, k, l;
 
-	for (j = 0; j <= Np; j++) {
+        for (j = 0; j <= Np; j++) {
 
-	    value = 0.0;
-	    for (i = 0; i <= N; i++)
-		for (k = 0; k <= i; k++)
-		    for (l = 0; l <= M - i; l++)
-			if (k + l == j)
-			    value += SpecialMath.combinations(i, k) * SpecialMath.combinations(M - i, l)
-				    * bCoefficients[N - i] * Math.pow(2.0 * samplingFrequency, i) * Math.pow(-1.0, k);
-	    bprime[j] = value;
+            value = 0.0;
+            for (i = 0; i <= N; i++)
+                for (k = 0; k <= i; k++)
+                    for (l = 0; l <= M - i; l++)
+                        if (k + l == j)
+                            value += SpecialMath.combinations(i, k) * SpecialMath.combinations(M - i, l)
+                                    * bCoefficients[N - i] * Math.pow(2.0 * samplingFrequency, i) * Math.pow(-1.0, k);
+            bprime[j] = value;
 
-	}
+        }
 
-	for (j = 0; j <= Dp; j++) {
+        for (j = 0; j <= Dp; j++) {
 
-	    value = 0.0;
-	    for (i = 0; i <= D; i++)
-		for (k = 0; k <= i; k++)
-		    for (l = 0; l <= M - i; l++)
-			if (k + l == j)
-			    value += SpecialMath.combinations(i, k) * SpecialMath.combinations(M - i, l)
-				    * aCoefficients[D - i] * Math.pow(2.0 * samplingFrequency, i) * Math.pow(-1.0, k);
-	    aprime[j] = value;
+            value = 0.0;
+            for (i = 0; i <= D; i++)
+                for (k = 0; k <= i; k++)
+                    for (l = 0; l <= M - i; l++)
+                        if (k + l == j)
+                            value += SpecialMath.combinations(i, k) * SpecialMath.combinations(M - i, l)
+                                    * aCoefficients[D - i] * Math.pow(2.0 * samplingFrequency, i) * Math.pow(-1.0, k);
+            aprime[j] = value;
 
-	}
+        }
 
-	aCoefficients = aprime;
-	bCoefficients = bprime;
+        aCoefficients = aprime;
+        bCoefficients = bprime;
 
-	normalize();
+        normalize();
 
     }
 
     @Override
     public boolean equals(Object o) {
 
-	if (!(o instanceof FilterCoefficients))
-	    return false;
+        if (!(o instanceof FilterCoefficients))
+            return false;
 
-	FilterCoefficients coefs = (FilterCoefficients) o;
+        FilterCoefficients coefs = (FilterCoefficients) o;
 
-	if (Arrays.equals(this.aCoefficients, coefs.aCoefficients)
-		&& Arrays.equals(this.bCoefficients, coefs.bCoefficients))
-	    return true;
-	return false;
+        if (Arrays.equals(this.aCoefficients, coefs.aCoefficients)
+                && Arrays.equals(this.bCoefficients, coefs.bCoefficients))
+            return true;
+        return false;
 
     }
 
     @Override
     public int hashCode() {
 
-	int hash = 7;
-	hash = 59 * hash + Arrays.hashCode(this.aCoefficients);
-	hash = 59 * hash + Arrays.hashCode(this.bCoefficients);
-	return hash;
+        int hash = 7;
+        hash = 59 * hash + Arrays.hashCode(this.aCoefficients);
+        hash = 59 * hash + Arrays.hashCode(this.bCoefficients);
+        return hash;
 
     }
 
     public void print() {
 
-	System.out.println("filter order: " + getFilterOrder());
+        System.out.println("filter order: " + getFilterOrder());
 
-	System.out.print("b: ");
-	for (int i = 0; i < bCoefficients.length; i++)
-	    System.out.print(bCoefficients[i] + ", ");
-	System.out.println();
+        System.out.print("b: ");
+        for (int i = 0; i < bCoefficients.length; i++)
+            System.out.print(bCoefficients[i] + ", ");
+        System.out.println();
 
-	System.out.print("a: ");
-	for (int i = 0; i < aCoefficients.length; i++)
-	    System.out.print(aCoefficients[i] + ", ");
-	System.out.println();
+        System.out.print("a: ");
+        for (int i = 0; i < aCoefficients.length; i++)
+            System.out.print(aCoefficients[i] + ", ");
+        System.out.println();
     }
 
     /**
      * Returns a String containing information about b and a coefficients.
-     * 
+     *
      * @return a String describing these filter coefficients.
      */
     @Override
     public String toString() {
-	String s = "filter order: " + getFilterOrder();
-	s += "\n";
+        String s = "filter order: " + getFilterOrder();
+        s += "\n";
 
-	s += "b coefficients:\n";
-	for (int i = 0; i < bCoefficients.length; i++)
-	    s += ("     " + bCoefficients[i] + "\n");
+        s += "b coefficients:\n";
+        for (int i = 0; i < bCoefficients.length; i++)
+            s += ("     " + bCoefficients[i] + "\n");
 
-	s += "a coefficients:\n";
-	for (int i = 0; i < aCoefficients.length; i++)
-	    s += ("     " + aCoefficients[i] + "\n");
-	return s;
+        s += "a coefficients:\n";
+        for (int i = 0; i < aCoefficients.length; i++)
+            s += ("     " + aCoefficients[i] + "\n");
+        return s;
     }
 
 }

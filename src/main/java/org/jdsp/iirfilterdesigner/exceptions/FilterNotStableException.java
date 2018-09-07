@@ -10,7 +10,7 @@ public class FilterNotStableException extends Exception {
      * Constructs a new exception with the specified detail message.
      */
     public FilterNotStableException() {
-	super("The filter designed is not stable.");
+        super("The filter designed is not stable.");
     }
 
 }

@@ -16,19 +16,19 @@ public enum ApproximationFunctionType {
      */
 
     public boolean isButterworth() {
-	return (this == BUTTERWORTH);
+        return (this == BUTTERWORTH);
     }
 
     public boolean isChebyshev1() {
-	return (this == CHEBYSHEV1);
+        return (this == CHEBYSHEV1);
     }
 
     public boolean isChebyshev2() {
-	return (this == CHEBYSHEV2);
+        return (this == CHEBYSHEV2);
     }
 
     public boolean isElliptic() {
-	return (this == ELLIPTIC);
+        return (this == ELLIPTIC);
     }
 
 }

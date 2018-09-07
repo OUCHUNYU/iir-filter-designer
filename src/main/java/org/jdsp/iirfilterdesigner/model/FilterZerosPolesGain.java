@@ -33,13 +33,13 @@ public class FilterZerosPolesGain {
      *
      * @param zeros an array of zeros
      * @param poles an array of poles
-     * @param gain the value of gain
+     * @param gain  the value of gain
      */
     public FilterZerosPolesGain(Complex[] zeros, Complex[] poles, double gain) {
 
-	this.zeros = zeros.clone();
-	this.poles = poles.clone();
-	this.gain = gain;
+        this.zeros = zeros.clone();
+        this.poles = poles.clone();
+        this.gain = gain;
 
     }
 
@@ -49,7 +49,7 @@ public class FilterZerosPolesGain {
      * @return an array of zeros
      */
     public Complex[] getZeros() {
-	return zeros;
+        return zeros;
     }
 
     /**
@@ -58,7 +58,7 @@ public class FilterZerosPolesGain {
      * @return an array of poles
      */
     public Complex[] getPoles() {
-	return poles;
+        return poles;
     }
 
     /**
@@ -67,7 +67,7 @@ public class FilterZerosPolesGain {
      * @return the value of gain
      */
     public double getGain() {
-	return gain;
+        return gain;
     }
 
     /**
@@ -79,32 +79,32 @@ public class FilterZerosPolesGain {
      */
     public FilterCoefficients convertToBACoefficients() {
 
-	ComplexPolynomial numeratorPoly;
-	ComplexPolynomial denominatorPoly;
-	Complex[] complexNumeratorCoeffs;
-	Complex[] complexDenominatorCoeffs;
-	double[] realNumeratorCoeffs;
-	double[] realDenominatorCoeffs;
+        ComplexPolynomial numeratorPoly;
+        ComplexPolynomial denominatorPoly;
+        Complex[] complexNumeratorCoeffs;
+        Complex[] complexDenominatorCoeffs;
+        double[] realNumeratorCoeffs;
+        double[] realDenominatorCoeffs;
 
-	if (getZeros().length > 0) {
-	    numeratorPoly = ComplexPolynomial.rootsToPolynomial(getZeros());
-	    complexNumeratorCoeffs = numeratorPoly.getCoefficients();
-	} else
-	    complexNumeratorCoeffs = new Complex[] { new Complex(1.0, 0) };
+        if (getZeros().length > 0) {
+            numeratorPoly = ComplexPolynomial.rootsToPolynomial(getZeros());
+            complexNumeratorCoeffs = numeratorPoly.getCoefficients();
+        } else
+            complexNumeratorCoeffs = new Complex[]{new Complex(1.0, 0)};
 
-	denominatorPoly = ComplexPolynomial.rootsToPolynomial(getPoles());
-	complexDenominatorCoeffs = denominatorPoly.getCoefficients();
+        denominatorPoly = ComplexPolynomial.rootsToPolynomial(getPoles());
+        complexDenominatorCoeffs = denominatorPoly.getCoefficients();
 
-	realNumeratorCoeffs = new double[complexNumeratorCoeffs.length];
-	realDenominatorCoeffs = new double[complexDenominatorCoeffs.length];
+        realNumeratorCoeffs = new double[complexNumeratorCoeffs.length];
+        realDenominatorCoeffs = new double[complexDenominatorCoeffs.length];
 
-	for (int i = 0; i < complexNumeratorCoeffs.length; i++)
-	    realNumeratorCoeffs[i] = gain * complexNumeratorCoeffs[i].getReal();
-	for (int i = 0; i < complexDenominatorCoeffs.length; i++)
-	    realDenominatorCoeffs[i] = complexDenominatorCoeffs[i].getReal();
+        for (int i = 0; i < complexNumeratorCoeffs.length; i++)
+            realNumeratorCoeffs[i] = gain * complexNumeratorCoeffs[i].getReal();
+        for (int i = 0; i < complexDenominatorCoeffs.length; i++)
+            realDenominatorCoeffs[i] = complexDenominatorCoeffs[i].getReal();
 
-	FilterCoefficients coeffs = new FilterCoefficients(realNumeratorCoeffs, realDenominatorCoeffs);
-	return coeffs;
+        FilterCoefficients coeffs = new FilterCoefficients(realNumeratorCoeffs, realDenominatorCoeffs);
+        return coeffs;
 
     }
 
@@ -112,66 +112,66 @@ public class FilterZerosPolesGain {
      * Prints the poles, zeros and gain on screen.
      */
     protected void print() {
-	System.out.println(toString());
+        System.out.println(toString());
     }
 
     /**
      * Returns a string containing the values of poles, zeros and gain.
-     * 
+     *
      * @return a string containing the values of zeros, poles and gain.
      */
     @Override
     public String toString() {
 
-	String s;
-	s = "Zeros:\n";
-	for (int i = 0; i < zeros.length; i++)
-	    s += ("     " + zeros[i].getReal() + "+" + zeros[i].getImaginary() + "j\n");
+        String s;
+        s = "Zeros:\n";
+        for (int i = 0; i < zeros.length; i++)
+            s += ("     " + zeros[i].getReal() + "+" + zeros[i].getImaginary() + "j\n");
 
-	s += "Poles:\n";
-	for (int i = 0; i < poles.length; i++)
-	    s += ("     " + poles[i].getReal() + "+" + poles[i].getImaginary() + "j\n");
+        s += "Poles:\n";
+        for (int i = 0; i < poles.length; i++)
+            s += ("     " + poles[i].getReal() + "+" + poles[i].getImaginary() + "j\n");
 
-	s += ("Gain: " + gain);
+        s += ("Gain: " + gain);
 
-	return s;
+        return s;
     }
 
     @Override
     public boolean equals(Object o) {
 
-	if (!(o instanceof FilterZerosPolesGain))
-	    return false;
-	FilterZerosPolesGain zpk = (FilterZerosPolesGain) o;
+        if (!(o instanceof FilterZerosPolesGain))
+            return false;
+        FilterZerosPolesGain zpk = (FilterZerosPolesGain) o;
 
-	if (zeros.length == zpk.getZeros().length)
-	    for (int i = 0; i < zeros.length; i++)
-		if (!zeros[i].equals(zpk.getZeros()[i]))
-		    return false;
-		else
-		    return false;
+        if (zeros.length == zpk.getZeros().length)
+            for (int i = 0; i < zeros.length; i++)
+                if (!zeros[i].equals(zpk.getZeros()[i]))
+                    return false;
+                else
+                    return false;
 
-	if (poles.length == zpk.getPoles().length)
-	    for (int i = 0; i < poles.length; i++)
-		if (!poles[i].equals(zpk.getPoles()[i]))
-		    return false;
-		else
-		    return false;
+        if (poles.length == zpk.getPoles().length)
+            for (int i = 0; i < poles.length; i++)
+                if (!poles[i].equals(zpk.getPoles()[i]))
+                    return false;
+                else
+                    return false;
 
-	if (gain != zpk.getGain())
-	    return false;
-	return true;
+        if (gain != zpk.getGain())
+            return false;
+        return true;
 
     }
 
     @Override
     public int hashCode() {
 
-	int hash = 3;
-	hash = 67 * hash + Arrays.deepHashCode(this.zeros);
-	hash = 67 * hash + Arrays.deepHashCode(this.poles);
-	hash = 67 * hash + (int) (Double.doubleToLongBits(this.gain) ^ (Double.doubleToLongBits(this.gain) >>> 32));
-	return hash;
+        int hash = 3;
+        hash = 67 * hash + Arrays.deepHashCode(this.zeros);
+        hash = 67 * hash + Arrays.deepHashCode(this.poles);
+        hash = 67 * hash + (int) (Double.doubleToLongBits(this.gain) ^ (Double.doubleToLongBits(this.gain) >>> 32));
+        return hash;
 
     }
 

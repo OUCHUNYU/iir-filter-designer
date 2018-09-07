@@ -27,76 +27,76 @@ public class FilterTimeDomainResponse {
 
     /**
      * Creates a new time domain response.
-     * 
-     * @param numberOfPoints the number of points for which the time domain
-     *        response was calculated
+     *
+     * @param numberOfPoints    the number of points for which the time domain
+     *                          response was calculated
      * @param samplingFrequency the sampling frequency of the signal
      */
     public FilterTimeDomainResponse(int numberOfPoints, double samplingFrequency) {
-	time = new double[numberOfPoints];
-	values = new double[numberOfPoints];
+        time = new double[numberOfPoints];
+        values = new double[numberOfPoints];
 
-	calculateTime(samplingFrequency);
+        calculateTime(samplingFrequency);
     }
 
     /**
      * Creates a new time domain response.
-     * 
-     * @param values the values of the time domain response
+     *
+     * @param values            the values of the time domain response
      * @param samplingFrequency the sampling frequency of the signal
      */
     public FilterTimeDomainResponse(double[] values, double samplingFrequency) {
-	this(values.length, samplingFrequency);
+        this(values.length, samplingFrequency);
 
-	this.values = values;
+        this.values = values;
     }
 
     /**
      * Calculates the time values for this response.
-     * 
+     *
      * @param samplingFrequency the sampling frequency of the signal
      */
     protected void calculateTime(double samplingFrequency) {
-	for (int i = 0; i < time.length; i++) {
-	    time[i] = (i) / samplingFrequency;
-	}
+        for (int i = 0; i < time.length; i++) {
+            time[i] = (i) / samplingFrequency;
+        }
     }
 
     /**
      * Returns the time values for the signal (in seconds).
-     * 
+     *
      * @return an array containing time value of each sample
      */
     public double[] getTime() {
-	return time;
+        return time;
     }
 
     /**
      * Returns the time domain response.
-     * 
+     *
      * @return an array containing the time domain response
      */
     public double[] getValues() {
-	return values;
+        return values;
     }
 
     /**
      * Returns whether this filter is stable or instable.
-     * 
+     *
      * @return true if the filter is stable.
      */
     public boolean isStable() {
-	for (int i = 0; i < values.length; i++)
-	    if (Math.abs(values[i]) > INSTABILITY_THRESHOLD)
-		return false;
-	return true;
+        for (int i = 0; i < values.length; i++)
+            if (Math.abs(values[i]) > INSTABILITY_THRESHOLD)
+                return false;
+        return true;
     }
 
     public int getIndexOfFirstSampleAboveInstabilityThreshold() {
-	for (int i = 0; i < values.length; i++)
-	    if (Math.abs(values[i]) > INSTABILITY_THRESHOLD)
-		return i;
-	return values.length;
+        for (int i = 0; i < values.length; i++)
+            if (Math.abs(values[i]) > INSTABILITY_THRESHOLD)
+                return i;
+        return values.length;
     }
 
 }

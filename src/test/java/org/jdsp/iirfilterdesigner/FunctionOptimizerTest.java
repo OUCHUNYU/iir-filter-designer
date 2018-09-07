@@ -20,10 +20,10 @@ public class FunctionOptimizerTest {
     @Test
     public void testMinimizeFunction() {
 
-	VRatio vRatio = new VRatio(1.0023772930076005, 0.9999004638148846);
-	double startValue = 1.688482411280818;
-	double r = FunctionOptimizer.minimizeFunction(vRatio, startValue, 250);
-	assertEquals(0.8830402459180449, r, 1e-3);
+        VRatio vRatio = new VRatio(1.0023772930076005, 0.9999004638148846);
+        double startValue = 1.688482411280818;
+        double r = FunctionOptimizer.minimizeFunction(vRatio, startValue, 250);
+        assertEquals(0.8830402459180449, r, 1e-3);
 
     }
 
@@ -34,12 +34,12 @@ public class FunctionOptimizerTest {
     @Test
     public void testMinimizeFunctionConstrained() {
 
-	EllipticIIRDesigner.KRatio kRatio = new KRatio();
+        EllipticIIRDesigner.KRatio kRatio = new KRatio();
 
-	kRatio.setKRatio(0.5);
-	double m = FunctionOptimizer.minimizeFunctionConstrained(kRatio, 0.0, 1.0, 250);
+        kRatio.setKRatio(0.5);
+        double m = FunctionOptimizer.minimizeFunctionConstrained(kRatio, 0.0, 1.0, 250);
 
-	assertEquals(0.02943873, m, 1e-4);
+        assertEquals(0.02943873, m, 1e-4);
 
     }
 }

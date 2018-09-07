@@ -14,20 +14,20 @@ public class IIRDesignerAssert extends SignalMLAssert {
      * Asserts that the two zeros, poles, gain representations of a filter are
      * equal concerning given deltas.
      *
-     * @param zpk1 expected zero, poles, gain representation of a filter
-     * @param zpk2 actual zero, poles, gain representation of a filter
+     * @param zpk1         expected zero, poles, gain representation of a filter
+     * @param zpk2         actual zero, poles, gain representation of a filter
      * @param complexDelta determines how much an actual zero or a pole (which
-     *        are Complex numbers) can be different from expected value for the
-     *        assertion to hold true
-     * @param gainDelta determines how much the actual value of gain can be
-     *        different from the expected value
+     *                     are Complex numbers) can be different from expected value for the
+     *                     assertion to hold true
+     * @param gainDelta    determines how much the actual value of gain can be
+     *                     different from the expected value
      */
     public static void assertEquals(FilterZerosPolesGain zpk1, FilterZerosPolesGain zpk2, Complex complexDelta,
-	    double gainDelta) {
+                                    double gainDelta) {
 
-	assertArrayEquals(zpk1.getZeros(), zpk2.getZeros(), complexDelta);
-	assertArrayEquals(zpk1.getPoles(), zpk2.getPoles(), complexDelta);
-	assertEquals(zpk1.getGain(), zpk2.getGain(), gainDelta);
+        assertArrayEquals(zpk1.getZeros(), zpk2.getZeros(), complexDelta);
+        assertArrayEquals(zpk1.getPoles(), zpk2.getPoles(), complexDelta);
+        assertEquals(zpk1.getGain(), zpk2.getGain(), gainDelta);
 
     }
 
@@ -35,13 +35,13 @@ public class IIRDesignerAssert extends SignalMLAssert {
      * Asserts that the two zeros, poles, gain representations of a filter are
      * equal concerning given delta.
      *
-     * @param zpk1 expected zero, poles, gain representation of a filter
-     * @param zpk2 actual zero, poles, gain representation of a filter
+     * @param zpk1  expected zero, poles, gain representation of a filter
+     * @param zpk2  actual zero, poles, gain representation of a filter
      * @param delta determines how much the actual value can be different from
-     *        the expected value
+     *              the expected value
      */
     public static void assertEquals(FilterZerosPolesGain zpk1, FilterZerosPolesGain zpk2, double delta) {
-	assertEquals(zpk1, zpk2, new Complex(delta, delta), delta);
+        assertEquals(zpk1, zpk2, new Complex(delta, delta), delta);
     }
 
     /**
@@ -52,7 +52,7 @@ public class IIRDesignerAssert extends SignalMLAssert {
      * @param zpk2 actual zero, poles, gain representation of a filter
      */
     public static void assertEquals(FilterZerosPolesGain zpk1, FilterZerosPolesGain zpk2) {
-	assertEquals(zpk1, zpk2, 0.0001);
+        assertEquals(zpk1, zpk2, 0.0001);
     }
 
     /**
@@ -60,14 +60,14 @@ public class IIRDesignerAssert extends SignalMLAssert {
      *
      * @param array1 an array containing expected values
      * @param array2 an array containing actual values
-     * @param delta how much the actual value can be different from the expected
-     *        value.
+     * @param delta  how much the actual value can be different from the expected
+     *               value.
      */
     public static void assertEquals(double[] array1, double[] array2, double delta) {
 
-	assertEquals(array1.length, array2.length);
-	for (int i = 0; i < array1.length; i++)
-	    assertEquals(array1[i], array2[i], delta);
+        assertEquals(array1.length, array2.length);
+        for (int i = 0; i < array1.length; i++)
+            assertEquals(array1[i], array2[i], delta);
 
     }
 
@@ -76,14 +76,14 @@ public class IIRDesignerAssert extends SignalMLAssert {
      * are equal concerning a delta.
      *
      * @param expected the expected filter coefficients
-     * @param coeffs the actual filter coefficients
-     * @param delta determines how much the actual values of the coefficients
-     *        can be different from the expected values.
+     * @param coeffs   the actual filter coefficients
+     * @param delta    determines how much the actual values of the coefficients
+     *                 can be different from the expected values.
      */
     public static void assertEquals(FilterCoefficients expected, FilterCoefficients coeffs, double delta) {
 
-	assertEquals(expected.getACoefficients(), coeffs.getACoefficients(), delta);
-	assertEquals(expected.getBCoefficients(), coeffs.getBCoefficients(), delta);
+        assertEquals(expected.getACoefficients(), coeffs.getACoefficients(), delta);
+        assertEquals(expected.getBCoefficients(), coeffs.getBCoefficients(), delta);
 
     }
 

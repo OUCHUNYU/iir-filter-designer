@@ -33,13 +33,13 @@ public class TransferFunction {
      * specified number of points.
      *
      * @param numberOfPoints number of frequencies at which the frequency
-     *        response will be computed
+     *                       response will be computed
      */
     public TransferFunction(int numberOfPoints, FilterCoefficients filterCoefficients) {
-	frequencies = new double[numberOfPoints];
-	gain = new Complex[numberOfPoints];
-	this.filterCoefficients = filterCoefficients;
-	calculateTransferFunction();
+        frequencies = new double[numberOfPoints];
+        gain = new Complex[numberOfPoints];
+        this.filterCoefficients = filterCoefficients;
+        calculateTransferFunction();
     }
 
     /**
@@ -48,24 +48,24 @@ public class TransferFunction {
      */
     protected void calculateTransferFunction() {
 
-	double[] numeratorCoefficients = ArrayOperations.reverse(filterCoefficients.getBCoefficients());
-	double[] denominatorCoefficients = ArrayOperations.reverse(filterCoefficients.getACoefficients());
+        double[] numeratorCoefficients = ArrayOperations.reverse(filterCoefficients.getBCoefficients());
+        double[] denominatorCoefficients = ArrayOperations.reverse(filterCoefficients.getACoefficients());
 
-	ComplexPolynomial numerator = new ComplexPolynomial(numeratorCoefficients);
-	ComplexPolynomial denominator = new ComplexPolynomial(denominatorCoefficients);
+        ComplexPolynomial numerator = new ComplexPolynomial(numeratorCoefficients);
+        ComplexPolynomial denominator = new ComplexPolynomial(denominatorCoefficients);
 
-	double frequency;
-	Complex exponent;
-	for (int i = 0; i < frequencies.length; i++) {
-	    frequency = i * Math.PI / frequencies.length;
-	    exponent = (new Complex(0, -frequency)).exp();
+        double frequency;
+        Complex exponent;
+        for (int i = 0; i < frequencies.length; i++) {
+            frequency = i * Math.PI / frequencies.length;
+            exponent = (new Complex(0, -frequency)).exp();
 
-	    Complex numeratorValue = numerator.evaluate(exponent);
-	    Complex denominatorValue = denominator.evaluate(exponent);
-	    Complex value = numeratorValue.divide(denominatorValue);
+            Complex numeratorValue = numerator.evaluate(exponent);
+            Complex denominatorValue = denominator.evaluate(exponent);
+            Complex value = numeratorValue.divide(denominatorValue);
 
-	    setValue(i, frequency, value);
-	}
+            setValue(i, frequency, value);
+        }
 
     }
 
@@ -73,13 +73,13 @@ public class TransferFunction {
      * Sets the value for the specified elements in the frequency and gain
      * arrays.
      *
-     * @param i the index of the element to change
+     * @param i         the index of the element to change
      * @param frequency the new value of frequency to be put in the array
-     * @param value the new value of gain to be put in the array
+     * @param value     the new value of gain to be put in the array
      */
     protected void setValue(int i, double frequency, Complex value) {
-	frequencies[i] = frequency;
-	gain[i] = value;
+        frequencies[i] = frequency;
+        gain[i] = value;
     }
 
     /**
@@ -88,9 +88,9 @@ public class TransferFunction {
      * @return the number of points this frequency response holds.
      */
     public int getSize() {
-	if (frequencies != null)
-	    return frequencies.length;
-	return 0;
+        if (frequencies != null)
+            return frequencies.length;
+        return 0;
     }
 
     /**
@@ -100,7 +100,7 @@ public class TransferFunction {
      * @return an array of frequencies
      */
     public double[] getFrequencies() {
-	return frequencies;
+        return frequencies;
     }
 
     /**
@@ -110,7 +110,7 @@ public class TransferFunction {
      * @return the specified element of the frequency array
      */
     public double getFrequency(int number) {
-	return frequencies[number];
+        return frequencies[number];
     }
 
     /**
@@ -119,7 +119,7 @@ public class TransferFunction {
      * @return the frequency response
      */
     public Complex[] getGain() {
-	return gain;
+        return gain;
     }
 
     /**
@@ -129,7 +129,7 @@ public class TransferFunction {
      * @return the specified element of the gain array
      */
     public Complex getGain(int number) {
-	return gain[number];
+        return gain[number];
     }
 
 }

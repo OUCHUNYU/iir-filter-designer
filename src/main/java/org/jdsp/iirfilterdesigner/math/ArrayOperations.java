@@ -12,24 +12,24 @@ public class ArrayOperations {
      * Returns the array extended to a new size. New elements are filled with
      * zeros. New array size must be greater or equal to the original array
      * size.
-     * 
-     * @param array the array to be resized
+     *
+     * @param array   the array to be resized
      * @param newSize the new size for the array
      * @return the resized array
      */
     public static double[] padArrayWithZerosToSize(double[] array, int newSize) {
 
-	assert (newSize >= array.length);
+        assert (newSize >= array.length);
 
-	double[] paddedArray = new double[newSize];
+        double[] paddedArray = new double[newSize];
 
-	System.arraycopy(array, 0, paddedArray, 0, array.length);
+        System.arraycopy(array, 0, paddedArray, 0, array.length);
 
-	for (int i = array.length; i < paddedArray.length; i++) {
-	    paddedArray[i] = 0;
-	}
+        for (int i = array.length; i < paddedArray.length; i++) {
+            paddedArray[i] = 0;
+        }
 
-	return paddedArray;
+        return paddedArray;
 
     }
 
@@ -42,25 +42,25 @@ public class ArrayOperations {
      */
     public static double[] convolve(double[] array1, double[] array2) {
 
-	int n = array1.length + array2.length - 1;
-	double[] result = new double[n];
-	double[] f = padArrayWithZerosToSize(array1, n);
-	double[] g = padArrayWithZerosToSize(array2, n);
+        int n = array1.length + array2.length - 1;
+        double[] result = new double[n];
+        double[] f = padArrayWithZerosToSize(array1, n);
+        double[] g = padArrayWithZerosToSize(array2, n);
 
-	int i;
-	int fpos, gpos;
+        int i;
+        int fpos, gpos;
 
-	for (i = 0; i < result.length; i++) {
+        for (i = 0; i < result.length; i++) {
 
-	    fpos = 0;
-	    gpos = i;
-	    for (; fpos <= i && gpos >= 0; fpos++, gpos--) {
-		result[i] += f[fpos] * g[gpos];
-	    }
+            fpos = 0;
+            gpos = i;
+            for (; fpos <= i && gpos >= 0; fpos++, gpos--) {
+                result[i] += f[fpos] * g[gpos];
+            }
 
-	}
+        }
 
-	return result;
+        return result;
     }
 
     /**
@@ -71,13 +71,13 @@ public class ArrayOperations {
      */
     public static double[] reverse(double[] array) {
 
-	double[] newArray = new double[array.length];
+        double[] newArray = new double[array.length];
 
-	for (int i = 0; i < array.length; i++) {
-	    newArray[i] = array[array.length - 1 - i];
-	}
+        for (int i = 0; i < array.length; i++) {
+            newArray[i] = array[array.length - 1 - i];
+        }
 
-	return newArray;
+        return newArray;
 
     }
 
@@ -85,17 +85,17 @@ public class ArrayOperations {
      * Returns a trimmed copy of a given array.
      *
      * @param array an array to be trimmed
-     * @param size the size to which the array should be trimmed (must be less
-     *        or equal to the original size of the array)
+     * @param size  the size to which the array should be trimmed (must be less
+     *              or equal to the original size of the array)
      * @return a trimmed copy of the given array
      */
     public static double[] trimArrayToSize(double[] array, int size) {
 
-	assert (array.length >= size);
+        assert (array.length >= size);
 
-	double[] trimmedArray = new double[size];
-	System.arraycopy(array, 0, trimmedArray, 0, size);
-	return trimmedArray;
+        double[] trimmedArray = new double[size];
+        System.arraycopy(array, 0, trimmedArray, 0, size);
+        return trimmedArray;
 
     }
 
@@ -103,45 +103,45 @@ public class ArrayOperations {
      * Returns a trimmed copy of a given array with the first numberOfElements
      * removed.
      *
-     * @param array an array to be trimmed
+     * @param array            an array to be trimmed
      * @param numberOfElements the number of elements to be removed from array
      * @return a trimmed copy of the given array
      */
     public static double[] removeFirstElements(double[] array, int numberOfElements) {
 
-	assert (array.length > numberOfElements);
+        assert (array.length > numberOfElements);
 
-	double[] trimmedArray = new double[array.length - numberOfElements];
+        double[] trimmedArray = new double[array.length - numberOfElements];
 
-	for (int i = 0; i < trimmedArray.length; i++)
-	    trimmedArray[i] = array[i + numberOfElements];
+        for (int i = 0; i < trimmedArray.length; i++)
+            trimmedArray[i] = array[i + numberOfElements];
 
-	return trimmedArray;
+        return trimmedArray;
 
     }
 
     public static Complex[] convertDoubleArrayToComplex(double[] input) {
-	Complex[] result = new Complex[input.length];
+        Complex[] result = new Complex[input.length];
 
-	for (int i = 0; i < result.length; i++)
-	    result[i] = new Complex(input[i], 0.0);
+        for (int i = 0; i < result.length; i++)
+            result[i] = new Complex(input[i], 0.0);
 
-	return result;
+        return result;
     }
 
     /**
      * Fills the arrray with a given value from the startIndex (incl.) to the
      * endIndex (excl.).
-     * 
-     * @param array the array to be filled with the value
-     * @param value the value that will be written to given range of the array
+     *
+     * @param array      the array to be filled with the value
+     * @param value      the value that will be written to given range of the array
      * @param startIndex first index to which the value will be written
-     * @param endIndex first index to which the value will not be written
+     * @param endIndex   first index to which the value will not be written
      */
     public static void fillArrayWithValue(double[] array, double value, int startIndex, int endIndex) {
-	for (int i = startIndex; i < endIndex; i++) {
-	    array[i] = value;
-	}
+        for (int i = startIndex; i < endIndex; i++) {
+            array[i] = value;
+        }
     }
 
 }

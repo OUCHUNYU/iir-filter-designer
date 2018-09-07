@@ -22,15 +22,15 @@ public abstract class FilterResponseCalculator {
 
     /**
      * Constructor. Creates a new FilterResponseCalculator.
-     * 
-     * @param samplingFrequency sampling frequency for which the responses will
-     *        be calculated.
+     *
+     * @param samplingFrequency  sampling frequency for which the responses will
+     *                           be calculated.
      * @param filterCoefficients coefficients of the filter for which the
-     *        responses will be calculated.
+     *                           responses will be calculated.
      */
     public FilterResponseCalculator(double samplingFrequency, FilterCoefficients filterCoefficients) {
-	this.samplingFrequency = samplingFrequency;
-	this.filterCoefficients = filterCoefficients;
+        this.samplingFrequency = samplingFrequency;
+        this.filterCoefficients = filterCoefficients;
     }
 
 }

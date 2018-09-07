@@ -19,16 +19,16 @@ class UnivariateFunctionWrappedInAMultivariate implements MultivariateRealFuncti
 
     /**
      * Creates a new multivariate function out of a univariate function.
-     * 
+     *
      * @param function univariate function to be wrapped in a multivariate
-     *        interface
+     *                 interface
      */
     public UnivariateFunctionWrappedInAMultivariate(UnivariateRealFunction function) {
-	this.function = function;
+        this.function = function;
     }
 
     public double value(double[] doubles) throws FunctionEvaluationException, IllegalArgumentException {
-	return function.value(doubles[0]);
+        return function.value(doubles[0]);
     }
 
 }

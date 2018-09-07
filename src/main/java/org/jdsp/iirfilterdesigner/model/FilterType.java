@@ -9,19 +9,19 @@ public enum FilterType {
     LOWPASS, HIGHPASS, BANDPASS, BANDSTOP;
 
     public boolean isLowpass() {
-	return (this == LOWPASS);
+        return (this == LOWPASS);
     }
 
     public boolean isHighpass() {
-	return (this == HIGHPASS);
+        return (this == HIGHPASS);
     }
 
     public boolean isBandpass() {
-	return (this == BANDPASS);
+        return (this == BANDPASS);
     }
 
     public boolean isBandstop() {
-	return (this == BANDSTOP);
+        return (this == BANDSTOP);
     }
 
 }

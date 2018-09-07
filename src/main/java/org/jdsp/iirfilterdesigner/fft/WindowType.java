@@ -6,7 +6,7 @@ package org.jdsp.iirfilterdesigner.fft;
 public enum WindowType {
 
     RECTANGULAR, BARTLETT, WELCH, HANN, HAMMING, KAISER(true, 2.0, Double.MIN_VALUE, Double.MAX_VALUE), GAUSSIAN(true,
-	    2.5, 2.0, Double.MAX_VALUE);
+            2.5, 2.0, Double.MAX_VALUE);
 
     private final boolean parametrized;
     private final double parameterDefault;
@@ -16,33 +16,33 @@ public enum WindowType {
     private static final Object[] ARGUMENTS = new Object[0];
 
     private WindowType() {
-	this.parametrized = false;
-	this.parameterDefault = 0.0;
-	this.parameterMin = 0.0;
-	this.parameterMax = 0.0;
+        this.parametrized = false;
+        this.parameterDefault = 0.0;
+        this.parameterMin = 0.0;
+        this.parameterMax = 0.0;
     }
 
     private WindowType(boolean parametrized, double parameterDefault, double parameterMin, double parameterMax) {
-	this.parametrized = parametrized;
-	this.parameterDefault = parameterDefault;
-	this.parameterMin = parameterMin;
-	this.parameterMax = parameterMax;
+        this.parametrized = parametrized;
+        this.parameterDefault = parameterDefault;
+        this.parameterMin = parameterMin;
+        this.parameterMax = parameterMax;
     }
 
     public boolean isParametrized() {
-	return parametrized;
+        return parametrized;
     }
 
     public double getParameterDefault() {
-	return parameterDefault;
+        return parameterDefault;
     }
 
     public double getParameterMin() {
-	return parameterMin;
+        return parameterMin;
     }
 
     public double getParameterMax() {
-	return parameterMax;
+        return parameterMax;
     }
 
 }

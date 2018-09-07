@@ -40,37 +40,37 @@ public class FilterFrequencyResponseCalculator extends FilterResponseCalculator 
 
     /**
      * Constructor.
-     * 
-     * @param numberOfPoints the number of values for which the filter responses
-     *        will be calculated (equal to the size of the arrays containing the
-     *        responses)
-     * @param samplingFrequency the sampling frequency of the signal for which
-     *        the filter responses will be calculated
+     *
+     * @param numberOfPoints     the number of values for which the filter responses
+     *                           will be calculated (equal to the size of the arrays containing the
+     *                           responses)
+     * @param samplingFrequency  the sampling frequency of the signal for which
+     *                           the filter responses will be calculated
      * @param filterCoefficients the coefficients of the filter for which the
-     *        filter responsess will be calculated
+     *                           filter responsess will be calculated
      */
     public FilterFrequencyResponseCalculator(int numberOfPoints, double samplingFrequency,
-	    FilterCoefficients filterCoefficients) {
-	super(samplingFrequency, filterCoefficients);
-	this.numberOfPoints = numberOfPoints;
+                                             FilterCoefficients filterCoefficients) {
+        super(samplingFrequency, filterCoefficients);
+        this.numberOfPoints = numberOfPoints;
 
-	transferFunction = new TransferFunction(numberOfPoints, filterCoefficients);
-	calculateFrequencies();
+        transferFunction = new TransferFunction(numberOfPoints, filterCoefficients);
+        calculateFrequencies();
     }
 
     /**
      * Precalculates the values for the frequencies.
      */
     protected void calculateFrequencies() {
-	frequencies = new double[transferFunction.getSize()];
+        frequencies = new double[transferFunction.getSize()];
 
-	for (int i = 0; i < frequencies.length; i++) {
-	    frequencies[i] = samplingFrequency / (2 * Math.PI) * transferFunction.getFrequency(i);
-	}
+        for (int i = 0; i < frequencies.length; i++) {
+            frequencies[i] = samplingFrequency / (2 * Math.PI) * transferFunction.getFrequency(i);
+        }
     }
 
     public FilterCoefficients getFilterCoefficients() {
-	return filterCoefficients;
+        return filterCoefficients;
     }
 
     /**
@@ -78,116 +78,116 @@ public class FilterFrequencyResponseCalculator extends FilterResponseCalculator 
      * constructor.
      *
      * @return the {@link FilterFrequencyResponse frequency response} of the
-     *         filter
+     * filter
      */
     public FilterFrequencyResponse getMagnitudeResponse() {
 
-	FilterFrequencyResponse frequencyResponse = new FilterFrequencyResponse(numberOfPoints);
+        FilterFrequencyResponse frequencyResponse = new FilterFrequencyResponse(numberOfPoints);
 
-	frequencyResponse.setFrequencies(frequencies);
-	for (int i = 0; i < transferFunction.getSize(); i++) {
-	    frequencyResponse.setValue(i, 20 * Math.log10(transferFunction.getGain(i).abs()));
-	}
+        frequencyResponse.setFrequencies(frequencies);
+        for (int i = 0; i < transferFunction.getSize(); i++) {
+            frequencyResponse.setValue(i, 20 * Math.log10(transferFunction.getGain(i).abs()));
+        }
 
-	return frequencyResponse;
+        return frequencyResponse;
 
     }
 
     /**
      * Returns the filter phase shift in degrees.
-     * 
+     *
      * @return the phase delay
      */
     public FilterFrequencyResponse getPhaseShiftInDegrees() {
 
-	FilterFrequencyResponse frequencyResponse = new FilterFrequencyResponse(numberOfPoints);
+        FilterFrequencyResponse frequencyResponse = new FilterFrequencyResponse(numberOfPoints);
 
-	double phaseDelay;
+        double phaseDelay;
 
-	frequencyResponse.setFrequencies(frequencies);
-	for (int i = 0; i < transferFunction.getSize(); i++) {
-	    phaseDelay = Math.toDegrees(transferFunction.getGain(i).getArgument());
-	    frequencyResponse.setValue(i, phaseDelay);
-	}
+        frequencyResponse.setFrequencies(frequencies);
+        for (int i = 0; i < transferFunction.getSize(); i++) {
+            phaseDelay = Math.toDegrees(transferFunction.getGain(i).getArgument());
+            frequencyResponse.setValue(i, phaseDelay);
+        }
 
-	frequencyResponse.setValues(SpecialMath.unwrap(frequencyResponse.getValues()));
+        frequencyResponse.setValues(SpecialMath.unwrap(frequencyResponse.getValues()));
 
-	return frequencyResponse;
+        return frequencyResponse;
 
     }
 
     /**
      * Returns the group delay characterizing the filter given in the
      * constructor.
-     * 
+     *
      * @return the group delay for the filter given in the constructor
      */
     public FilterFrequencyResponse getGroupDelayResponse() {
-	/**
-	 * Implementation details:
-	 * https://ccrma.stanford.edu/~jos/filters/Numerical_Computation_Group_Delay.html
-	 * https://ccrma.stanford.edu/~jos/filters/Group_Delay_Computation_grpdelay_m.html
-	 *
-	 * This algorithm poorly handles singularities and should probably be
-	 * replaced, maybe by Shpak algorithm. (An implementation of Shpak
-	 * algorithm may be seen in Matlab after typing 'type grpdelay').
-	 */
+        /**
+         * Implementation details:
+         * https://ccrma.stanford.edu/~jos/filters/Numerical_Computation_Group_Delay.html
+         * https://ccrma.stanford.edu/~jos/filters/Group_Delay_Computation_grpdelay_m.html
+         *
+         * This algorithm poorly handles singularities and should probably be
+         * replaced, maybe by Shpak algorithm. (An implementation of Shpak
+         * algorithm may be seen in Matlab after typing 'type grpdelay').
+         */
 
-	int fftSize = numberOfPoints * 2;
+        int fftSize = numberOfPoints * 2;
 
-	double[] freq = new double[fftSize];
-	int i;
+        double[] freq = new double[fftSize];
+        int i;
 
-	for (i = 0; i < fftSize; i++) {
-	    freq[i] = samplingFrequency * i / fftSize;
-	}
+        for (i = 0; i < fftSize; i++) {
+            freq[i] = samplingFrequency * i / fftSize;
+        }
 
-	int oa = filterCoefficients.getACoefficients().length - 1; // order of
-								   // a(z)
-	int oc = oa + filterCoefficients.getBCoefficients().length - 1; // order
-									// of
-									// c(z)
-	double[] c = ArrayOperations.convolve(filterCoefficients.getBCoefficients(),
-		ArrayOperations.reverse(filterCoefficients.getACoefficients())); // c(z)
-										 // =
-										 // b(z)*a(1/z)*z^(-oa)
+        int oa = filterCoefficients.getACoefficients().length - 1; // order of
+        // a(z)
+        int oc = oa + filterCoefficients.getBCoefficients().length - 1; // order
+        // of
+        // c(z)
+        double[] c = ArrayOperations.convolve(filterCoefficients.getBCoefficients(),
+                ArrayOperations.reverse(filterCoefficients.getACoefficients())); // c(z)
+        // =
+        // b(z)*a(1/z)*z^(-oa)
 
-	double[] cr = new double[oc + 1]; // derivative of c wrt 1/z
-	for (i = 0; i < cr.length; i++) {
-	    cr[i] = c[i] * i;
-	}
+        double[] cr = new double[oc + 1]; // derivative of c wrt 1/z
+        for (i = 0; i < cr.length; i++) {
+            cr[i] = c[i] * i;
+        }
 
-	cr = ArrayOperations.padArrayWithZerosToSize(cr, fftSize);
-	FourierTransform fourierTransform = new FourierTransform();
-	Complex[] numerator = fourierTransform.forwardFFT(cr);
+        cr = ArrayOperations.padArrayWithZerosToSize(cr, fftSize);
+        FourierTransform fourierTransform = new FourierTransform();
+        Complex[] numerator = fourierTransform.forwardFFT(cr);
 
-	c = ArrayOperations.padArrayWithZerosToSize(c, fftSize);
-	Complex[] denominator = fourierTransform.forwardFFT(c);
+        c = ArrayOperations.padArrayWithZerosToSize(c, fftSize);
+        Complex[] denominator = fourierTransform.forwardFFT(c);
 
-	double minmag = SpecialMath.getMachineEpsilon() * 10;
+        double minmag = SpecialMath.getMachineEpsilon() * 10;
 
-	for (i = 0; i < denominator.length; i++) {
-	    if (denominator[i].abs() < minmag) {
-		logger.debug("group delay singular - setting to 0");
-		numerator[i] = new Complex(0, 0);
-		denominator[i] = new Complex(1, 0);
-	    }
-	}
+        for (i = 0; i < denominator.length; i++) {
+            if (denominator[i].abs() < minmag) {
+                logger.debug("group delay singular - setting to 0");
+                numerator[i] = new Complex(0, 0);
+                denominator[i] = new Complex(1, 0);
+            }
+        }
 
-	double[] groupDelay = new double[c.length];
+        double[] groupDelay = new double[c.length];
 
-	for (i = 0; i < groupDelay.length; i++) {
-	    groupDelay[i] = (numerator[i].divide(denominator[i])).getReal() - oa;
-	}
+        for (i = 0; i < groupDelay.length; i++) {
+            groupDelay[i] = (numerator[i].divide(denominator[i])).getReal() - oa;
+        }
 
-	groupDelay = ArrayOperations.trimArrayToSize(groupDelay, fftSize / 2);
-	freq = ArrayOperations.trimArrayToSize(freq, fftSize / 2);
+        groupDelay = ArrayOperations.trimArrayToSize(groupDelay, fftSize / 2);
+        freq = ArrayOperations.trimArrayToSize(freq, fftSize / 2);
 
-	FilterFrequencyResponse filterResponse = new FilterFrequencyResponse(freq.length);
-	filterResponse.setFrequencies(freq);
-	filterResponse.setValues(groupDelay);
+        FilterFrequencyResponse filterResponse = new FilterFrequencyResponse(freq.length);
+        filterResponse.setFrequencies(freq);
+        filterResponse.setValues(groupDelay);
 
-	return filterResponse;
+        return filterResponse;
 
     }
 

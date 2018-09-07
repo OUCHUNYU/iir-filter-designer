@@ -15,14 +15,14 @@ public class SignalMLAssert extends Assert {
      * Asserts that two Complex numbers are equal concerning a delta.
      *
      * @param expected the expected value
-     * @param actual the actual value
-     * @param delta determines how much the actual value can be different from
-     *        the expected value
+     * @param actual   the actual value
+     * @param delta    determines how much the actual value can be different from
+     *                 the expected value
      */
     public static void assertEquals(Complex expected, Complex actual, Complex delta) {
 
-	assertEquals(expected.getReal(), actual.getReal(), delta.getReal());
-	assertEquals(expected.getImaginary(), actual.getImaginary(), delta.getImaginary());
+        assertEquals(expected.getReal(), actual.getReal(), delta.getReal());
+        assertEquals(expected.getImaginary(), actual.getImaginary(), delta.getImaginary());
 
     }
 
@@ -31,10 +31,10 @@ public class SignalMLAssert extends Assert {
      * 1e-5.
      *
      * @param expected the expected value
-     * @param actual the actual value
+     * @param actual   the actual value
      */
     public static void assertEquals(Complex expected, Complex actual) {
-	assertEquals(expected, actual, new Complex(1e-5, 1e-5));
+        assertEquals(expected, actual, new Complex(1e-5, 1e-5));
     }
 
     /**
@@ -42,15 +42,15 @@ public class SignalMLAssert extends Assert {
      * concerning a delta.
      *
      * @param expected the expected values
-     * @param actual the actual values
-     * @param delta determines how much the actual value can be different from
-     *        the expected value
+     * @param actual   the actual values
+     * @param delta    determines how much the actual value can be different from
+     *                 the expected value
      */
     public static void assertArrayEquals(Complex[] expected, Complex[] actual, Complex delta) {
 
-	assertEquals(expected.length, actual.length);
-	for (int i = 0; i < expected.length; i++)
-	    assertEquals(expected[i], actual[i], delta);
+        assertEquals(expected.length, actual.length);
+        for (int i = 0; i < expected.length; i++)
+            assertEquals(expected[i], actual[i], delta);
 
     }
 
@@ -59,15 +59,15 @@ public class SignalMLAssert extends Assert {
      * delta.
      *
      * @param expected the expected values
-     * @param actual the actual values
-     * @param delta determines how much the actual value can be different from
-     *        the expected value for the assertion to hold true
+     * @param actual   the actual values
+     * @param delta    determines how much the actual value can be different from
+     *                 the expected value for the assertion to hold true
      */
     public static void assertArrayEquals(double[] expected, double[] actual, double delta) {
 
-	assertEquals(expected.length, actual.length);
-	for (int i = 0; i < expected.length; i++)
-	    assertEquals(expected[i], actual[i], delta);
+        assertEquals(expected.length, actual.length);
+        for (int i = 0; i < expected.length; i++)
+            assertEquals(expected[i], actual[i], delta);
 
     }
 
@@ -76,15 +76,15 @@ public class SignalMLAssert extends Assert {
      * delta.
      *
      * @param expected the expected values
-     * @param actual the actual values
-     * @param delta determines how much the actual value can be different from
-     *        the expected value for the assertion to hold true
+     * @param actual   the actual values
+     * @param delta    determines how much the actual value can be different from
+     *                 the expected value for the assertion to hold true
      */
     public static void assertArrayEquals(double[][] expected, double[][] actual, double delta) {
-	assertEquals(expected.length, actual.length);
+        assertEquals(expected.length, actual.length);
 
-	for (int i = 0; i < expected.length; i++)
-	    assertArrayEquals(expected[i], actual[i], delta);
+        for (int i = 0; i < expected.length; i++)
+            assertArrayEquals(expected[i], actual[i], delta);
     }
 
     /**
@@ -92,29 +92,29 @@ public class SignalMLAssert extends Assert {
      * delta.
      *
      * @param expected the expected values
-     * @param actual the actual values
-     * @param delta determines how much the actual value can be different from
-     *        the expected value for the assertion to hold true
+     * @param actual   the actual values
+     * @param delta    determines how much the actual value can be different from
+     *                 the expected value for the assertion to hold true
      */
     public static void assertMatrixEquals(RealMatrix expected, RealMatrix actual, double delta) {
-	double[][] expectedData = expected.getData();
-	double[][] actualData = actual.getData();
-	assertArrayEquals(expectedData, actualData, delta);
+        double[][] expectedData = expected.getData();
+        double[][] actualData = actual.getData();
+        assertArrayEquals(expectedData, actualData, delta);
     }
 
     /**
      * Asserts that the elements of two vectors are equal concerning a delta.
      *
      * @param expected the expected values
-     * @param actual the actual values
-     * @param delta determines how much the actual value can be different from
-     *        the expected value for the assertion to hold true
+     * @param actual   the actual values
+     * @param delta    determines how much the actual value can be different from
+     *                 the expected value for the assertion to hold true
      */
     public static void assertVectorEquals(RealVector expected, RealVector actual, double delta) {
-	double[] expectedData = expected.getData();
-	double[] actualData = actual.getData();
+        double[] expectedData = expected.getData();
+        double[] actualData = actual.getData();
 
-	assertArrayEquals(expectedData, actualData, delta);
+        assertArrayEquals(expectedData, actualData, delta);
     }
 
 }

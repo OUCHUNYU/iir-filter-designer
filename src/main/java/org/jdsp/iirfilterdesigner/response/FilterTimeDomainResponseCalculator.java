@@ -9,8 +9,8 @@ import org.jdsp.iirfilterdesigner.model.FilterCoefficients;
 public class FilterTimeDomainResponseCalculator extends FilterResponseCalculator {
 
     public FilterTimeDomainResponseCalculator(double samplingFrequency, FilterCoefficients filterCoefficients) {
-	super(samplingFrequency, filterCoefficients);
-	// TODO Auto-generated constructor stub
+        super(samplingFrequency, filterCoefficients);
+        // TODO Auto-generated constructor stub
     }
 
     // /**
